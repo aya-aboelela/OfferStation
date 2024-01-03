@@ -1,0 +1,25 @@
+#bannerDiV{
+    border-radius: 15px;
+  }
+  #mask{
+    border-radius: 15px;
+  }
+  .starRateColor{
+    color: #ffb624;
+    font-size: 35px;
+}.row {
+  --bs-gutter-x: 5.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-.5 * var(--bs-gutter-x));
+  margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+.container{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+.container:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}

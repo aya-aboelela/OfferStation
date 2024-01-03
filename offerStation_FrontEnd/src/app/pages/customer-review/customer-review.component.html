@@ -1,0 +1,69 @@
+
+          
+            <div class="card col-11 b-4 col-12 d-flex flex-column justify-content-center align-items-center">
+                <div class="card-body">
+                        <div class="col-11">
+                            <form class="col-12 d-flex-column align-items-center justify-content-center"[formGroup]="NewReviewForm" (ngSubmit)="SaveReview()">
+                                
+                                <div class="form-group mt-1 d-flex justify-content-start align-items-baseline">
+                                   
+                                    <div class="col-7">
+                                     <h3 >Order Rating</h3>
+     
+     
+                                    </div>
+                                     <div class="col-5  ">
+                                        <div>
+                                            <ngb-rating  class="starRateColor"  [class.is-invalid]="Rating?.invalid &&Rating?.touched"  formControlName="Rating"  [max]="5"  ></ngb-rating> 
+
+                                        </div>
+                                         <h5 *ngIf="Rating?.errors?.['required']" class="text-danger">required</h5>
+
+                                     </div>
+                                    
+     
+                                 </div>
+                                 
+                                    
+                                     
+                                    
+     
+                                 <div class="form-group mt-1  d-flex justify-content-start align-items-baseline">
+                                   
+                                    <div class="col-7">
+                                     <h3 >Comment</h3>
+     
+     
+                                    </div>
+                                     <div class="col-5">
+                                        <textarea style="height: 100px;" placeholder="write your comment here" type="text" [class.is-invalid]="comment?.invalid &&comment?.touched"  formControlName="comment"></textarea>
+                                        <h5 Class="d-block" *ngIf="comment?.errors?.['required']" class="text-danger">required</h5>
+                                          <h5 *ngIf="comment?.errors?.['minlength']" class="text-danger">comment must be at least 4
+                                            characters</h5>
+                                           <h5 *ngIf="comment?.errors?.['maxlength']" class="text-danger">comment must be less than 200
+                                           characters</h5>
+
+                                     </div>
+                                     
+                                     
+                                    
+     
+                                 </div>
+                                 <div class="d-flex justify-content-center pt-3">
+                                    <button type="submit"  class="btn btn-success btn-lg" [disabled]="!NewReviewForm.valid">Save</button>                    
+                                  </div>
+    
+                            
+                            
+                            </form>
+
+                        </div>
+                       
+                        
+                    
+                    
+                </div>
+            </div>
+
+
+     

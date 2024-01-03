@@ -1,0 +1,18 @@
+.filter-header:hover{
+    cursor: pointer;
+}
+
+li.active{
+    background-color:  #ffc107;
+    color: black;
+}
+#searchDiv{
+    background-color: #e12539;
+    color: white;
+}
+.btn-bg{
+    background-color: #ffc107;
+    color: white;
+    
+}
+

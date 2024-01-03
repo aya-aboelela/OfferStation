@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row mt-3">
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" >
+          <mat-tab label="pending order" >
+            <app-owner-requested-orders [OwnerId]="ownerId"></app-owner-requested-orders>
+          
+          </mat-tab>
+          <mat-tab label="All" >
+            <app-owner-requested-orders-after-shipped [OwnerId]="ownerId"></app-owner-requested-orders-after-shipped>
+            
+          </mat-tab>
+        </mat-tab-group>
+       
+      </div>
+
+</div>
+  
+  

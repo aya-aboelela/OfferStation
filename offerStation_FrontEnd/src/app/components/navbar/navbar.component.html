@@ -1,0 +1,154 @@
+<header>
+  <div class="p-3 text-center  border-bottom">
+    <div class="container">
+      <div class="row gy-3 fs-sm">
+        <div class="col-lg-2 col-sm-4 col-4 me-5">
+          <a href="https://mdbootstrap.com/" target="_blank" class="float-start">
+            <img src="../../../assets/imges/logo.PNG" width="200px">
+          </a>
+        </div>
+
+        <div class="order-lg-last col-lg-6 col-sm-8 col-8 me-4">
+          <div class="d-flex float-end">
+
+            <div *ngIf="userdata == null; then thenBlock else elseBlock"></div>
+
+            <ng-template #thenBlock>
+              <a routerLink="/login" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center">
+                <i class="fas fa-user-alt m-1 me-md-2"></i>
+                <p class="d-none d-md-block mb-0">Sign in</p>
+              </a>
+
+              <a class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="fas fa-user-alt"></i>
+                  <small class="ms-2 mb-0">Register</small>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" routerLink="/customerRegister">Customer</a></li>
+                  <li><a class="dropdown-item" routerLink="/ownerRegister">Owner</a></li>
+                  <li><a class="dropdown-item" routerLink="/supplierRegister">Supplier</a></li>
+
+                </ul>
+              </a>
+            </ng-template>
+
+            <ng-template #elseBlock>
+              <a class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="fas fa-user-alt"></i>
+                  <small class="ms-2 mb-0">{{ userName }}</small>
+                </a>
+                <ul class="dropdown-menu">
+                  <li *ngIf="UserRole =='customer'">
+                    <a class="dropdown-item " routerLink="/customer/profile">Profile</a>
+                  </li>
+                  <li *ngIf="UserRole =='owner'">
+                    <a class="dropdown-item " routerLink="/owner/profile">Profile</a>
+                  </li>
+                  <li *ngIf="UserRole =='supplier'">
+                    <a class="dropdown-item " routerLink="/supplier/profile">Profile</a>
+                  </li>
+                  <li *ngIf="UserRole =='admin'">
+                    <a class="dropdown-item " routerLink="/admin">Dashboard</a>
+                  </li>
+                  <li><a class="dropdown-item"  routerLink="/login" (click)="LogOut()">Log Out</a></li>
+                </ul>
+              </a>
+            </ng-template>
+
+
+            <!-- bydefault -->
+
+            <a *ngIf="UserRole =='owner'"  routerLink="/cart-owner" class="border rounded py-1 px-3 nav-link d-flex align-items-center">
+              <i class="fas fa-shopping-cart m-1 me-md-2"></i>
+              <p class="d-none d-md-block mb-0">My cart</p>
+            </a>
+            <!-- for customer -->
+            <a *ngIf="UserRole =='customer'" routerLink="/cart-user"
+              class="border rounded py-1 px-3 nav-link d-flex align-items-center">
+              <i class="fas fa-shopping-cart m-1 me-md-2"></i>
+              <p class="d-none d-md-block mb-0">My cart</p>
+            </a>
+          </div>
+        </div>
+        <!-- Center elements -->
+        <!-- Right elements -->
+        <div class="col-lg-4 col-md-12 col-12" style="width: 25%;">
+          <div class="input-group">
+            <input type="search" class="form-control" placeholder="Search" aria-label="Search"
+              aria-describedby="search-addon" />
+            <button type="button" class="btn btn-outline-warning"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-container">
+    <div class="container justify-content-center justify-content-md-between">
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarLeftAlignExample"
+        aria-controls="navbarLeftAlignExample" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarLeftAlignExample">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+          <li class="nav-item" *ngIf="userdata == null">
+            <a class="nav-link text-white" routerLink="">Home</a>
+          </li>
+          <li class="nav-item" *ngIf="UserRole =='customer'">
+            <a class="nav-link text-white" routerLink="">Home</a>
+          </li>
+          <li class="nav-item" *ngIf="UserRole =='owner'">
+            <a class="nav-link text-white" routerLink="/supplierHome">Home</a>
+          </li>
+          <li class="nav-item" *ngIf="UserRole =='admin'">
+            <a class="nav-link text-white" routerLink="/admin">Home</a>
+          </li>
+
+
+          <!-- <li class="nav-item">
+            <a class="nav-link text-white" href="#">Gift boxes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">Menu item</a>
+          </li> -->
+
+          <li class="nav-item dropdown" *ngIf="UserRole =='customer' || UserRole =='supplier'">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Categories
+            </a>
+            <ul class="dropdown-menu">
+              <li *ngFor="let category of categoryList"><a class="dropdown-item"
+                  href="/owners/{{category.name}}">{{category.name}}</a></li>
+
+            </ul>
+          </li>
+
+
+          <li class="nav-item dropdown" *ngIf="UserRole =='owner'">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Categories
+            </a>
+            <ul class="dropdown-menu">
+              <li *ngFor="let category of suppliercategoryList"><a class="dropdown-item"
+                  href="/owners/{{category.name}}">{{category.name}}</a></li>
+
+            </ul>
+          </li>
+
+          
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+</header>

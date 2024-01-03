@@ -1,0 +1,52 @@
+
+<section class="sign-in">
+  <div class="container">
+      <div class="signin-content">
+          <div class="signin-image">
+              <figure><img src="../../../assets/imges/signin-image.jpg" alt="sing in image"></figure>
+             
+          </div>
+
+          <div class="signin-form">
+              <h2 class="form-title">Sign in</h2>
+              <form class="register-form"  [formGroup]='loginForm' (ngSubmit)="submitData()">
+                <div *ngIf=" msg.length > 0 " class="alert alert-primary alert-dismissible fade show" role="alert">
+                  <button type="button" (click)="removemesage()" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  <strong>{{msg}}</strong>
+                </div>
+                  <div class="form-group">
+                      <label  class="fas fa-user-alt"></label>
+                      <input type="email"  formControlName="email" placeholder="Email Address" 
+[class.is-invalid]="email?.errors && email?.touched" />
+</div>
+                    <small *ngIf="email?.errors?.['required'] && (email?.dirty || email?.touched)" class="text-danger">
+                      Email Is Required
+                    </small>
+                    <div>
+                  
+                    </div>
+                  <div class="form-group" >
+                      <label  class="fa fa-lock"></label>
+                     <input type="password"  formControlName="password"  placeholder="Password" 
+                        [class.is-invalid]="password?.errors && password?.touched" />
+                      </div>
+                        <small *ngIf="password?.errors?.['required'] && (password?.dirty || password?.touched)" class="text-danger">
+                        Password Is Required
+                      </small>
+
+                      <div class="form-group">
+                    
+                    </div>
+    
+                  <div class="form-group form-button">
+
+                      <input type="submit" [disabled]="loginForm.invalid" class="btn btn-primary btn-block mb-4"   value="Log in"/>
+          
+                  </div>
+              </form>
+            
+          </div>
+      </div>
+  </div>
+</section>
+

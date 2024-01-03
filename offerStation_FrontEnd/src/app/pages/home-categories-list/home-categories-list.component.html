@@ -1,0 +1,6 @@
+<div class="d-flex justify-content-between p-5"  >
+  
+   <app-product-card [id]="offer.id" [name]="offer.name" [sellerImage]="offer.traderImage" [OfferImage]="offer.image" [SellerId]="offer.ownerId" [offerId]="offer.id" Type="owner" [description]="offer.description" [afterPrice]="offer.price" [prefPrice]="offer.prefPrice" *ngFor="let offer of offerList">
+   </app-product-card>
+
+</div>

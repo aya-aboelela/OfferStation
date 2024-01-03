@@ -1,0 +1,73 @@
+<div class="container">
+
+  <div class="mb-3 mt-5 border-style">
+    <div class="p-3 row">
+      <form style="margin-top: 2rem;" [formGroup]="SupplierInfoForm" (ngSubmit)="SubmitData()">
+
+        <div class="container">
+
+          <div class="profilePhoto">
+            <label class="hoverable" for="fileInput">
+              <img [src]="imageUrl ? imageUrl : 'https://www.w3schools.com/howto/img_avatar.png'">
+              <div class="hover-text">Choose file</div>
+              <div class="background"></div>
+            </label>
+            <br />
+            <input id="fileInput" type='file' accept="image/*" (change)="ProcessFile($event)">
+            <button class="btn btn-danger removePhoto" *ngIf="imageUrl" (click)="delete()">Remove</button>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <label class="fw-bold">Name</label>
+              <input [class.is-invalid]="name?.invalid &&name?.touched" formControlName="name" type="text"
+                class="form-control">
+              <div *ngIf="name?.errors &&name?.touched">
+                <small *ngIf="name?.errors?.['required']" class="text-danger">Name is required</small>
+              </div>
+            </div>
+          </div>
+
+          <hr class="mx-n3">
+
+          <div class="row">
+            <div class="col-6">
+              <label class="fw-bold">Phone Number</label>
+              <input type="text" class="form-control" formControlName="phoneNumber"
+                [class.is-invalid]="phoneNumber?.touched &&phoneNumber?.invalid">
+
+              <div *ngIf="phoneNumber?.errors &&phoneNumber?.touched">
+                <small *ngIf="phoneNumber?.errors?.['required']" class="text-danger">Phone is required</small>
+              </div>
+            </div>
+          </div>
+
+          <hr class="mx-n3">
+
+          <div class="row">
+            <div class="col-6">
+              <label class="fw-bold">Email</label>
+              <input type="text" class="form-control" formControlName="email"
+                [class.is-invalid]="email?.touched &&email?.invalid">
+
+              <div *ngIf="email?.errors &&email?.touched">
+                <small *ngIf="email?.errors?.['required'] && (email?.dirty || email?.touched)" class="text-danger">Email
+                  is required</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-6">
+              <button type="submit" class="btn btn-success w-100 me-2"
+                [disabled]="!SupplierInfoForm.valid">Save</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="alert alert-success mb-5" [hidden]="!isUpdated">
+    <strong>Success!</strong> Updated Successfully.
+  </div>
+</div>

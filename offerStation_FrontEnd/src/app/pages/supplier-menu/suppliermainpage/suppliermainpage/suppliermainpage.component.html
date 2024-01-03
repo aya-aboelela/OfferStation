@@ -1,0 +1,43 @@
+
+<div class="text-center" style="padding-top: 71px;">
+  <!-- src="{{ownerInfo.image}}" -->
+  <img [src]="supplierinfo.image" data-test="brand-logo" class="brand-logo" src="https://fakeimg.pl/300/" alt="Gonn’s dir" width="250" height="250"></div><h1 data-test="brand-name" class="text-center f-30 f-m-20 primary-text mt-2">{{supplierinfo.name}}</h1>
+  <p data-test="brand-cusine" class="mt-2 text-center f-14 f-400 cuisine-string white"><ngb-rating class="starRateColor " [max]="5" [rate]="supplierinfo.rating" [readonly]="true" ></ngb-rating></p>
+
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+  <mat-tab>
+
+    <ng-template mat-tab-label><i class="fa-light fa-book" aria-hidden="true"></i>
+
+      Menu
+    </ng-template>
+    <app-supplierproduct></app-supplierproduct>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label><i class="fa fa-gift" aria-hidden="true"></i>
+
+
+      Offers
+    </ng-template>
+    <app-supplieroffer></app-supplieroffer>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label><i class="fa fa-map-marker-alt" aria-hidden="true"> </i>
+
+      <!-- <mat-icon class="example-tab-icon">thumb_up</mat-icon> -->
+      Addreses
+    </ng-template>
+    <app-supplieraddresses></app-supplieraddresses>
+    <!-- <app-supplier-addresses></app-supplier-addresses> -->
+
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label><i class="far fa-comments"> </i>
+      <!-- <mat-icon class="example-tab-icon">thumb_up</mat-icon> -->
+      Reviews
+    </ng-template>
+   <app-supplierreviews></app-supplierreviews>
+  </mat-tab>
+
+</mat-tab-group>

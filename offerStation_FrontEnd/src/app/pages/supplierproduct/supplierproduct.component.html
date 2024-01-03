@@ -1,0 +1,131 @@
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="accordion mt-2" id="ccordionPanelsStayOpenExample" s tyle="padding-inline: inherit">
+        <div class="accordion-item ">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button text-dark bg-light" type="button" data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              Categories
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+            data-bs-parent="#accordionFlushExample">
+            <ul  class="list-group w-100 border-0 ">
+              <li
+                  class="list-group-item active border-0 m-0 filter-header"
+                  [class.active]="selectedId === 0"
+                  (click)="setIndex(0)">
+                All
+              </li>
+              <li *ngFor="let item of MenucategoryList"
+                  class="list-group-item filter-header pe-auto border-0"
+                  [class.active]="selectedId === item.id"
+                  (click)="setIndex(item.id)">
+                {{ item.name }}
+              </li>
+          </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button text-dark bg-light" type="button" data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              Prices
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+            data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body" style="padding-top: 34px;">
+
+              <mat-slider  min={{min}}  max={{max}}  value=min discrete="true">
+                <input matSliderThumb [(ngModel)]="selectedValue">
+
+              </mat-slider>
+              <label class="d-flex justify-content-center"> Your Selected Range Price is {{selectedValue}} EGP</label>
+              <div class="d-flex justify-content-center">
+
+                <button type="button" class=" btn btn-primary" (click)="getselectedprice(selectedValue)">Apply</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-9 collapse card d-block mb-5 mt-2" style="background-color: #f4f5f7;">
+      <div class="row">
+        <!-- <div class="col-lg-4 col-md-4 col-sm-6 d-flex" *ngFor="let item of ProductListByCategoryName | paginate:{itemsPerPage:pagesize,currentPage:pageNumber ,totalItems: totalItems}">
+          <div class="card mt-2 mb-2" style="width:400px">
+            <span class="discount_3">
+
+
+              <span class="disc-val" style="margin-left: 4px">{{item.discount}}٪</span>
+            </span>
+
+
+            <img class="card-img-top" src="https://fakeimg.pl/300/" alt="Card image">
+
+            <div class="card-body text-center">
+              <h4 class="card-title font-weight-bold">{{item.name}}</h4>
+
+              <div class="d-flex justify-content-between">
+                <h5 class="small text-danger " style=" text-decoration-line: line-through">{{item.price}} EGP</h5>
+                <h5 class="text-dark mb-0">{{item.discountPrice}} EGP</h5>
+              </div>
+              <p> {{item.description}}</p>
+              <p><button class="buttoncard btn  btn-success">Add to Cart</button></p>
+            </div>
+
+          </div>
+        </div> -->
+
+      <div class="row" *ngIf="ProductListByCategoryName?.length; then successblock; else failedblock;"></div>
+      <ng-template #successblock>
+        <div class="row d-flex ">
+          <div class="row d-flex flex-wrap justify-content-center">
+            <div class="col-lg-4 col-md-4 col-sm-6 d-flex" *ngFor="let item of ProductListByCategoryName| paginate:{itemsPerPage:pagesize,currentPage:pageNumber }">
+              <div class="card mt-2 mb-2" style="width:400px">
+
+
+
+                <img [src]="item.image" class="card-img-top" src="https://fakeimg.pl/300/" alt="Card image">
+
+                <div class="card-body text-center">
+                  <h4 class="card-title font-weight-bold">{{item.name}}</h4>
+
+                  <div class="d-flex justify-content-between">
+                    <h5 class="text-dark mb-0">{{item.price}} EGP</h5>
+                  </div>
+                  <p> {{item.description}}</p>
+                  <p><button class="buttoncard btn  btn-success" (click)="AddToCart(item)">Add to Cart</button></p>
+                </div>
+
+              </div>
+            </div>
+            <div class="d-flex justify-content-center  mt-5">
+              <pagination-controls (pageChange)="PageNumberChanged($event)" previousLabel="Previous" nextLabel="Next"></pagination-controls>
+
+            </div>
+          </div>
+
+        </div>
+
+      </ng-template>
+      <ng-template #failedblock>
+        <div class="col-12 mt-2 text-center index">
+          <h5>
+            Sorry we can't find any categories that matches your search, please chooses from categories  to get results
+          </h5>
+        </div>
+      </ng-template>
+    </div>
+      </div>
+    </div>
+  </div>
+

@@ -1,0 +1,81 @@
+.border-style {
+    border: 1px solid #e6e5e5;
+    border-radius: 15px;
+}
+
+#manageProfile {
+    background-color: #289b22;
+    border-radius: 15px 15px 0px 0px;
+    height: 40px;
+}
+
+.btn-default {
+    background-color: #e6e5e5;
+}
+
+.profilePhoto {
+    width: min-content;
+    float: right;
+    margin-right: 7rem;
+}
+
+.submitbtn {
+    width: 22%;
+    margin-left: 7rem;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.hoverable {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    height: 160px;
+    width: 160px;
+    border: 1px solid #000;
+    border-radius: 50%;
+}
+
+.hoverable .hover-text {
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.hoverable .background {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.hoverable:hover .hover-text {
+    display: block;
+}
+
+.hoverable:hover .background {
+    display: block;
+}
+
+#fileInput {
+    display: none;
+}
+
+.removePhoto {
+    margin-left: 3rem;
+    width: 62px;
+    padding: 0em;
+}

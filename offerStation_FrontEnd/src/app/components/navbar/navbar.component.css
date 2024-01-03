@@ -1,0 +1,17 @@
+.icon-hover:hover {
+  border-color: #FEA116 !important;
+  background-color: white !important;
+}
+
+.icon-hover:hover i {
+color: #FEA116 !important;
+}
+.float-start{
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+  font-family:Lucida Sans;
+}
+.navbar-container{
+  background-color: #FEA116;
+}

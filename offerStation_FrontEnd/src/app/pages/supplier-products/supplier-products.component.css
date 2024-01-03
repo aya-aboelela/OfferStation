@@ -1,0 +1,80 @@
+.address-container {
+    /* background-color: rgb(241, 237, 237); */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 55%;
+}
+
+.address-contenr {
+    box-shadow: -1px -1px 11px 5px gray;
+    margin-top: 0px;
+}
+
+.addressdata {
+    color: rgb(100, 100, 100);
+}
+
+#update {
+    color: white;
+    border: 0.5px solid gray;
+    background-color: rgb(0, 165, 60);
+    height: 2.2rem;
+    width: 10rem;
+}
+
+.red-color {
+    color: red;
+}
+
+.modal-header {
+    display: inline;
+}
+
+.modal-title {
+    color: #3b71ca;
+}
+
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    border: 1px solid #888;
+}
+
+/* The Close Button */
+.close {
+    /* color: #aaa; */
+    float: right;
+    font-size: 28px;
+    background-color: transparent;
+    border: none;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}

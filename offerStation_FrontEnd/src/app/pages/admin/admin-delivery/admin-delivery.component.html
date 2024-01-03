@@ -1,0 +1,148 @@
+<div class="container">
+    <div class="example-container mat-elevation-z8 p-2">
+        <div>
+            <h1 class="float-start">Deliveries</h1>
+            <button class="btn btn-success m-3 float-end" (click)="openModal()">Add [+]</button>
+        </div>
+
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered py-3">
+            <thead class="table-dark text-white">
+                <tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let delivery of Deliveries; index as i">
+                    <td>{{delivery.id}}</td>
+                    <td>{{delivery.name}}</td>
+                    <td>{{delivery.phone}}</td>
+
+                    <td style="text-align: center;">
+                        <button mat-icon-button (click)="openEditModal(delivery,i)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="onDelete(delivery.id,i)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <!-- Start New Category Model -->
+    <div class="modal" id="exampleModal" [ngStyle]="{'display':display}" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" style="font-size: initial;">Delivery Details </h4>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="deliveryForm" (ngSubmit)="OnSubmit()">
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+
+                                    <div class="mb-3">
+                                        <div>
+                                            <label for="name" class="col-form-label">Name</label>
+                                            <input type="text" class="form-control" id="name" formControlName="name">
+                                            <div *ngIf="name?.errors &&name?.touched">
+                                                <small *ngIf="name?.errors?.['required']" class="text-danger">Name is
+                                                    required</small>
+                                                <small *ngIf="name?.errors?.['min']" class="text-danger">Name must be at
+                                                    least 3 characters</small>
+                                                <small *ngIf="name?.errors?.['max']" class="text-danger">Name should not
+                                                    exceed 30 characters
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div>
+                                            <label for="phone" class="col-form-label">Phone</label>
+                                            <input type="text" class="form-control" id="phone" formControlName="phone">
+                                            <div *ngIf="phone?.errors &&phone?.touched">
+                                                <small *ngIf="phone?.errors?.['required']" class="text-danger">Phone is
+                                                    required</small>
+                                                <small *ngIf="phone?.errors?.['pattern']" class="text-danger">
+                                                    Phone number must be 11 number like 01********* </small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" id="update" class="btn btn-success">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End New Category Model -->
+
+
+    <!-- Start Edit Category Model -->
+    <div class="modal" id="exampleModal" [ngStyle]="{'display':display1}" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-label="Close" (click)="onCloseEditHandled()"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" style="font-size: initial;">Edit Category </h4>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="deliveryForm" (ngSubmit)="onUpdate()">
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Name</label>
+                                        <input type="text" formControlName="name" class="form-control"
+                                            [value]="delivery.name">
+                                        <div *ngIf="name?.errors &&name?.touched">
+                                            <small *ngIf="name?.errors?.['required']" class="text-danger">Name is
+                                                required</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Phone</label>
+                                        <input type="text" formControlName="phone" class="form-control"
+                                            [value]="delivery.phone">
+                                        <div *ngIf="phone?.errors &&phone?.touched">
+                                            <small *ngIf="phone?.errors?.['required']" class="text-danger">Phone is
+                                                required</small>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" id="update" class="btn btn-success">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Edit Category Model -->

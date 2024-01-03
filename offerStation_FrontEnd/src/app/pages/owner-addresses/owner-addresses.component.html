@@ -1,0 +1,110 @@
+<div class="example-container mat-elevation-z8 p-2">
+  <div>
+    <button class="btn btn-success m-3 float-end" (click)="openAddressModal()">Add New [+]</button>
+  </div>
+
+  <table datatable class="table table-bordered py-3">
+    <thead class="table-dark text-white">
+      <tr style="text-align: center;">
+        <th scope="col">City</th>
+        <th scope="col">Details</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let add of AddressList; index as i">
+        <td>{{add.cityName}}</td>
+        <td>{{add.details}}</td>
+
+        <td style="text-align: center;">
+          <button mat-icon-button (click)="opeEditAddressModal(add.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="DeleteAddress(add.id,i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- New Address Model -->
+<div class="modal" id="exampleModal" [ngStyle]="{'display':display}" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseAddressHandled()"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" style="font-size: initial;">Add New Address </h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addressForm" (ngSubmit)="SubmitData()">
+          <div class="row">
+            <div>
+              <div class="form-group">
+                <div class="mb-3">
+                  <label for="cityId" class="form-label">City Name</label>
+                  <select class="form-select form-select-lg" formControlName="cityId" name="cityId">
+                    <option *ngFor="let city of cities;" value={{city.id}}>
+                      {{city.name}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="details" class="col-form-label">Details</label>
+            <input type="text" class="form-control" id="details" formControlName="details">
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" id="update" class="btn">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit Address Model -->
+
+<div class="modal" id="exampleModal" [ngStyle]="{'display':display1}" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseEditAddressHandled()"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" style="font-size: initial;">Edit Address </h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addressForm" (ngSubmit)="UpdateAddress()">
+          <div class="row">
+            <div>
+              <div class="form-group">
+                <div class="mb-3">
+                  <label for="cityId" class="form-label">City Name</label>
+                  <select class="form-select form-select-lg" formControlName="cityId">
+                    <option *ngFor="let city of cities;" [value]="city.id">
+                      {{city.name}} </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="col-form-label">Details</label>
+            <input type="text" formControlName="details" class="form-control" [value]="Address.details">
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" id="update" class="btn">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<mat-sidenav-container>
+  <mat-sidenav opened mode="side">
+    <mat-list>
+      <mat-list-item class="mb-2">
+        <div class="d-flex">
+          <i class="fa-solid fa-user pe-2"></i>
+          <a routerLink="supplierDashboard/{{supplierId}}">DashBoard</a>
+        </div>
+      </mat-list-item>
+      <mat-list-item class="mb-2">
+        <div class="d-flex">
+          <i class="fa-solid fa-user pe-2"></i>
+          <a routerLink="Info/{{supplierId}}">Your Acount </a>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item>
+        <div class="d-flex">
+          <i class="fa-solid fa-location-dot pe-2"></i>
+          <a routerLink="adresses/{{supplierId}}"> All Branches</a>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item>
+        <div class="d-flex">
+          <i class="fa-solid fa-location-dot pe-2"></i>
+          <a routerLink="categories/{{supplierId}}"> All Categories</a>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item>
+        <div class="d-flex">
+          <i class="fa-solid fa-location-dot pe-2"></i>
+          <a routerLink="products/{{supplierId}}">All Products</a>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item>
+        <div class="d-flex">
+          <i class="fa-solid fa-location-dot pe-2"></i>
+          <a routerLink="offers/{{supplierId}}">All Offers</a>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="d-flex">
+          <i class="fa-solid fa-location-dot pe-2"></i>
+          <a routerLink="customerOrders/{{supplierId}}">Customers Orders</a>
+        </div>
+      </mat-list-item>
+
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

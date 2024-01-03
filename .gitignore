@@ -1,0 +1,57 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+/offerStation_FrontEnd/.vscode
+/offerStation_FrontEnd/node_modules
+# Compiled output
+/offerStation_FrontEnd/dist
+/offerStation_FrontEnd/tmp
+/offerStation_FrontEnd/out-tsc
+/offerStation_FrontEnd/bazel-out
+
+
+# Node
+/offerStation_FrontEnd/node_modules
+/offerStation_FrontEnd/npm-debug.log
+/offerStation_FrontEnd/yarn-error.log
+
+# IDEs and editors
+/offerStation_FrontEnd/.idea/
+/offerStation_FrontEnd/.project
+/offerStation_FrontEnd/.classpath
+/offerStation_FrontEnd/.c9/
+/offerStation_FrontEnd/*.launch
+/offerStation_FrontEnd/.settings/
+/offerStation_FrontEnd/*.sublime-workspace
+
+# Visual Studio Code
+/offerStation_FrontEnd/.vscode/*
+/offerStation_FrontEnd/!.vscode/settings.json
+/offerStation_FrontEnd/!.vscode/tasks.json
+/offerStation_FrontEnd/!.vscode/launch.json
+/offerStation_FrontEnd/!.vscode/extensions.json
+/offerStation_FrontEnd/.history/*
+
+# Miscellaneous
+/offerStation_FrontEnd/.angular/cache
+/offerStation_FrontEnd/.sass-cache/
+/offerStation_FrontEnd/connect.lock
+/offerStation_FrontEnd/coverage
+/offerStation_FrontEnd/libpeerconnection.log
+/offerStation_FrontEnd/testem.log
+/offerStation_FrontEnd/typings
+
+# System files
+/offerStation_FrontEnd/.DS_Store
+/offerStation_FrontEnd/Thumbs.db
+/offerStation_BackEnd/.vs
+/offerStation_BackEnd/offerStation.Core/bin/Debug/net7.0
+/offerStation_BackEnd/offerStation.Core/obj
+/offerStation_BackEnd/offerStation.EF/bin
+/offerStation_BackEnd/offerStation.EF/bin/Debug/net7.0
+/offerStation_BackEnd/offerStation.EF/obj
+/offerStation_BackEnd/offerStation_BackEnd/bin/Debug/net7.0
+/offerStation_BackEnd/offerStation_BackEnd/obj
+/offerStation_BackEnd/offerStation_BackEnd/appsettings.Development.json
+/offerStation_BackEnd/offerStation_BackEnd/appsettings.json
+/offerStation_BackEnd/offerStation.EF/Migrations
+/offerStation_FrontEnd/package-lock.json

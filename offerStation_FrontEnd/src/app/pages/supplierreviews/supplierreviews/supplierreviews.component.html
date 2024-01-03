@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+      <div class="col-1">
+      </div>
+      <div class="col-10 ">
+        <div>
+          <div
+            class="u-container-style u-grey-10 u-list-item u-repeater-item u-list-item-1 d-block mb-1 mt-3 rounded-3 border border-secondary"
+            style="background-color: #f4f5f7;" *ngFor="let item of reviewList">
+            <div class="container">
+              <div class="row">
+                <div class="col-10">
+                  <div class="chip">
+                    <img src="../../../assets/imges/customer.png" alt="Person" width="96" height="96">
+                    <h6 class="d-flex " style="margin-top: 14px;">{{item.personName}}</h6>
+                  </div>
+                </div>
+                <div class="col-2 ml-2">
+                  <ngb-rating class="starRateColor ml-auto" [max]="5" [rate]="item.rating" [readonly]="true"></ngb-rating>
+                </div>
+                <div>
+                  <div class="row">
+  
+                    <div class="col-10">
+                      <p class="u-text u-text-4 ms-5">{{item.comment}}.</p>
+                    </div>
+                    <div class="col-2">
+                      <p class="u-text u-text-4 me-1">{{item.createdTime| date:'short'}}.</p>
+                    </div> 
+                   
+                  </div>
+                 
+                </div>
+          
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center bg-white mt-2 p-2" *ngIf="viewMoreBtnShow===true">
+        <a  class="btn btn-warning text-green border-style fs-24 a-style "  (click)="showReview()">show more</a>
+      </div>
+      <div class="col-1">
+      </div>
+    </div>
+  </div>
+  
+  

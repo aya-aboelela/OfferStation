@@ -1,0 +1,106 @@
+<div class="container">
+  <button class="btn btn-success m-3 float-end" (click)="openOfferModal()">Add New Offer</button>
+  <table class="table table-hover mt-5">
+    <thead>
+      <tr>
+
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Description</th>
+        <th scope="col">Products</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let offer of OfferList; index as i">
+        <td><img [src]="offer.image" width="100" height="100"></td>
+        <td>{{offer.name}}</td>
+        <td>{{offer.price}}</td>
+        <td>{{offer.description}}</td>
+        <td></td>
+        <td><button class="btn btn-danger" (click)="DeleteOffer(offer.id,i)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Start New Offer Model -->
+<div class="modal" id="exampleModal" [ngStyle]="{'display':display}" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseOfferHandled()"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" style="font-size: initial;">Add New Offer </h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="OfferForm" (ngSubmit)="SubmitData()">
+
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <div class="d-flex justify-content-between mb-1">
+                  <div>
+                    <label for="name" class="col-form-label">Name</label>
+                    <input type="text" class="form-control" id="name" formControlName="name">
+                  </div>
+
+                  <div>
+                    <label for="price" class="col-form-label">Price</label>
+                    <input type="text" class="form-control" id="price" formControlName="price">
+                  </div>
+                </div>
+
+                <div class="mb-1">
+                  <label for="description" class="col-form-label">Description</label>
+                  <input type="text" class="form-control" id="description" formControlName="description">
+                </div>
+
+                <div class="mb-1">
+                  <label for="image" class="col-form-label">Offer Image</label>
+                  <input type="file" class="form-control" accept="image/*" (change)="ProcessFile($event)">
+                </div>
+
+                <button type="button" class="btn mt-3 addproduct" (click)="AddProduct()">Add Product</button>
+                <ng-container formArrayName="products" *ngFor="let product of productsControls; let i=index">
+                  <ng-container [formGroup]="product">
+
+                    <div class="from-group">
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <label class="col-form-label">Product Name</label>
+                          <select class=" form-select" formControlName="productId">
+                            <option *ngFor="let product of ProductList" value="{{product.id}}">
+                              {{product.name}}
+                            </option>
+                          </select>
+
+                        </div>
+
+                        <div>
+                          <label for="quantity" class="col-form-label">Quantity</label>
+                          <input type="number" id="quantity" class="form-control" formControlName="quantity">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="input-group input-group-outline mt-2">
+                      <button type="button" class="btn btn-danger btn-sm" (click)="DeleteProduct(i)">Delete</button>
+                    </div>
+                  </ng-container>
+                </ng-container>
+
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" id="update" class="btn" [disabled]="OfferForm.invalid">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End New Offer Model -->

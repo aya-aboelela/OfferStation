@@ -1,0 +1,127 @@
+<div class="container">
+  <div class="example-container mat-elevation-z8 p-2">
+    <div>
+      <h1 class="float-start">Supplier Divisions</h1>
+      <button class="btn btn-success m-3 float-end" (click)="openCategoryModal()">Add [+]</button>
+    </div>
+
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered py-3">
+      <thead class="table-dark text-white">
+        <tr>
+          <th>Division No.</th>
+          <th>Division Name</th>
+          <th>Division Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let division of categories; index as i">
+          <td>{{division.id}}</td>
+          <td>{{division.name}}</td>
+          <td style="text-align: center;"><img [src]="division.image" width="50" height="50" class="rounded-circle">
+          </td>
+          <td style="text-align: center;">
+            <button mat-icon-button (click)="openEditCategoryModal(division,i)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="onDelete(division.id,i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  
+  <!-- Start New Category Model -->
+  <div class="modal" id="exampleModal" [ngStyle]="{'display':display}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" aria-label="Close" (click)="onCloseCategoryHandled()"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" style="font-size: initial;">Category Details </h4>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="categoryForm" (ngSubmit)="OnSubmit()">
+
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+
+                  <div class="mb-3">
+                    <div>
+                      <label for="name" class="col-form-label">Category Name</label>
+                      <input type="text" class="form-control" id="name" formControlName="name">
+                      <div *ngIf="name?.errors &&name?.touched">
+                        <small *ngIf="name?.errors?.['required']" class="text-danger">Category Name is required</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="image" class="col-form-label">Category Image</label>
+                    <input type="file" class="form-control" accept="image/*" (change)="ProcessFile($event)">
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" id="update" class="btn btn-success">SUBMIT</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End New Category Model -->
+
+
+  <!-- Start Edit Category Model -->
+  <div class="modal" id="exampleModal" [ngStyle]="{'display':display1}" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" aria-label="Close" (click)="onCloseEditCategoryHandled()"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" style="font-size: initial;">Edit Category </h4>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="categoryForm" (ngSubmit)="onUpdate()">
+
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+
+                  <div class="mb-3">
+                    <label class="col-form-label">Category Name</label>
+                    <input type="text" formControlName="name" class="form-control" [value]="supplierCategory.name">
+                    <div *ngIf="name?.errors &&name?.touched">
+                      <small *ngIf="name?.errors?.['required']" class="text-danger">Category Name is required</small>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="col-form-label">Category Image</label>
+                    <input type="file" class="form-control" accept="image/*" (change)="ProcessFile($event)">
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" id="update" class="btn btn-success">SUBMIT</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Edit Category Model -->

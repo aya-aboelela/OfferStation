@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="example-container mat-elevation-z8 p-2">
+        <div>
+          <h1 class="float-start">Waiting Owners</h1>
+        </div>
+        
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered py-3">
+          <thead class="table-dark text-white">
+            <tr>
+              <th>No.</th>
+              <th>Name</th>
+              <th>Image</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let owner of Owners; index as i">
+              <td>{{owner.id}}</td>
+              <td>{{owner.name}}</td>
+              <td style="text-align: center;"><img [src]="owner.image" width="50" height="50" class="rounded-circle"></td>
+              <td>{{owner.phoneNumber}}</td>
+              <td>{{owner.email}}</td>
+              <td style="text-align: center;">
+                <button mat-icon-button (click)="onApprove(i, owner.id)">
+                    <mat-icon>done</mat-icon>
+                </button>
+                <button mat-icon-button (click)="onDelete(i, owner.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+    </div>

@@ -1,0 +1,19 @@
+
+<div class="container"  style="height: 650px;">
+    <table class="table table-hover mt-5">
+      <thead>
+        <tr>
+          <th scope="col" style="color:#FEA116">City</th>
+          <th scope="col"  style="color:#FEA116">More Details</th>
+     
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of AddressList; index as i">
+          <td>{{item.cityName}}</td>
+          <td>{{item.details}}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,0 +1,72 @@
+<div class="container mt-5 mb-5">
+            
+    <table class="table  table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+        <thead class="table-warning">
+            <tr>
+                <th>order Number</th>
+                <th>Seller Name</th>
+                <th>Total</th>
+                <th>Date</th>
+                <th>order Status</th>
+                <th>order details</th>
+                <th>Confirm</th>
+            </tr>
+           
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of ordertList let i = index " >
+                <td>{{i}}</td>
+                <td>{{order.traderName}}</td>
+                <td>{{order.total}}</td>
+                <td>{{order.orderDate }}</td>
+                <td>{{getOrderStatus(order.orderStatus)}}</td>
+                <td><button class="btn btn-success " (click)="openAddressModal(order.offers,order.products)">Order Details</button></td>
+                <td><button type="button" class="btn btn-success " (click)="openReviewsModal(order.traderId,order.id)" [disabled]="order.orderStatus != 2">Delivered</button></td>
+               
+            </tr>
+        </tbody> 
+    </table>
+    <div class="modal " id="exampleModal" [ngStyle]="{'display':display}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close " aria-label="Close"  (click)="onCloseAddressHandled()"><span
+              aria-hidden="true">&times;</span></button>
+          <h2 class="modal-title" style="font-size: initial; color: #e7880a;">Order Details </h2>
+        </div>
+        <div class="modal-body">
+          <div *ngFor="let offer of offersResult ">
+            <app-offer-product-details Type="offer" [id]="offer.id" [Quantity]="offer.quantity" ></app-offer-product-details>
+          </div>
+          <div *ngFor="let product of productResult ">
+             <app-offer-product-details Type="product" [id]="product.id" [Quantity]="product.quantity" ></app-offer-product-details>
+          </div>
+          
+           
+  
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="modal " id="exampleModal" [ngStyle]="{'display':displayModel2}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close " aria-label="Close"  (click)="onCloseReviewHandled()"><span
+              aria-hidden="true">&times;</span></button>
+          <h2 class="modal-title" style="font-size: initial; color: #e7880a;">Order Details </h2>
+        </div>
+        <div class="modal-body">
+          
+          <app-customer-review [customerId]="customerId" (modelClose)="closeModel($event)"  [ownerId]="ownerId" [OrderId]="orderId"></app-customer-review>
+           
+  
+        </div>
+      </div>
+    </div>
+    </div>
+    
+    </div>

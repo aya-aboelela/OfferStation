@@ -1,0 +1,18 @@
+.body{
+background-color:  #f1f1f2;
+}
+.order-container{
+background-color: white;
+height: 100px;
+font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-weight: 500;
+color:  #313133;
+}
+.cart-container{
+ height: auto;
+  background-color: white;
+}
+.confirm-button{
+ background-color:#FEA116 ;
+}
+

@@ -1,0 +1,11 @@
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center align-items-center">
+        <select id="location_country" formControlName="location_country" class="form-control" (change)="selectChange($event)">
+            <option *ngFor ="let delivary of deliveryList" [value]="delivary.id"  >{{delivary.name}} </option>
+     </select>
+     <button  class="btn btn-warning mt-5 w-50" *ngIf="Type=='customerOrder'" [disabled]="deliveryId==0" (click)="ConfirmCustomerOrder()">Confirm</button>
+     <button  class="btn btn-Warning mt-5 w-50" *ngIf="Type=='ownerOrder'" [disabled]="deliveryId==0" (click)="ConfirmOwnerOrder()">Confirm</button>
+    </div>
+
+
+</div>

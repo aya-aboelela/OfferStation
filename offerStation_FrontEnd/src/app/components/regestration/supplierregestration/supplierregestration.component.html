@@ -1,0 +1,125 @@
+<section class="signup">
+  <div class="container">
+    <div class="signup-content">
+      <div class="signup-form">
+        <h2 class="form-title">Sign up</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="submitData()">
+
+          <div class="form-group">
+            <label class="fas fa-user-alt"></label>
+            <input type="text" formControlName="name" placeholder="Your Name "
+              [class.is-invalid]="Name?.invalid && Name?.touched">
+          </div>
+          <small *ngIf="Name?.errors?.['required'] && (Name?.dirty || Name?.touched)" class="text-danger">
+            Name Is Required
+          </small>
+          <br>
+
+          <br>
+
+
+          <div class="form-group">
+            <label class="fas fa-phone"></label>
+            <input type="text" formControlName="phoneNumber" placeholder="Your Phone "
+              [class.is-invalid]="phoneNumber?.errors && phoneNumber?.touched" />
+          </div>
+          <small *ngIf="phoneNumber?.errors?.['required'] && (phoneNumber?.dirty || phoneNumber?.touched)"
+            class="text-danger">
+            Phone Is Required
+          </small>
+          <small *ngIf="registerForm.get('phoneNumber')?.hasError('invalidSupplierPhone') && (phoneNumber?.dirty )"
+            class="text-danger">
+            Phone number is invalid. Please enter 11 digits without non-numeric characters.
+          </small>
+
+          <br>
+          <div class="form-group">
+            <label class="fa fa-envelope"></label>
+            <input type="email" formControlName="email" placeholder="Email Address"
+              [class.is-invalid]="Email?.errors && Email?.touched" />
+          </div>
+          <small *ngIf="Email?.errors?.['required'] && (Email?.dirty || Email?.touched)" class="text-danger">
+            Email Is Required
+          </small>
+          <!-- bi bi-lock -->
+          <br>
+          <div class="form-group">
+
+            <label class="fa fa-lock"></label>
+            <input type="password" #password formControlName="Password" placeholder="Password"
+              [class.is-invalid]="Password?.errors && Password?.touched" />
+          </div>
+          <small *ngIf="Password?.errors?.['required'] && (Password?.dirty || Password?.touched)" class="text-danger">
+            Password Is Required
+          </small>
+          <small *ngIf="Password?.errors?.['minLength'] && (Password?.dirty || Password?.touched)" class="text-danger">
+            Password should be greater than 6
+          </small>
+          <small *ngIf="Password?.errors?.['maxLength'] && (Password?.dirty || Password?.touched)" class="text-danger">
+            Password should be At max 10
+          </small>
+          <br>
+          <div class="form-group">
+
+            <label class="fa fa-lock"></label>
+            <input formControlName="Confirm" type="password" placeholder="Repeat your password">
+          </div>
+          <small class="text-danger" *ngIf="registerForm?.errors?.['misMatch']">Password and confirm password not
+            match</small>
+          <br>
+
+          <div class="from-group">
+
+            <select class="form-select my-3" formControlName="supplierCategoryId">
+              <option selected disabled value="">Select Category</option>
+              <option *ngFor="let category of categories" value="{{category.id}}">
+                {{category.name}}
+              </option>
+            </select>
+          </div>
+
+
+          <br>
+          <button type="button" class="btn btn-primary float-center mb-2" (click)="addAddress()">Add Address</button>
+          <ng-container formArrayName="address" *ngFor="let adress of AddressControls; let i=index">
+            <ng-container [formGroup]="adress">
+              <div class="from-group">
+                <select class="form-select my-3" formControlName="cityId">
+                  <option selected="true" disabled value="">Select City</option>
+                  <option *ngFor="let city of Cities" value="{{city.id}}">
+                    {{city.name}}
+                  </option>
+                </select>
+              </div>
+              <div class="input-group input-group-outline">
+                <input type="text" placeholder="Details" formControlName="details">
+              </div>
+              <div class="input-group input-group-outline">
+                <button type="button" class="btn btn-danger btn-sm float-end my-3"
+                  (click)="deleteAddress(i)">Delete</button>
+              </div>
+            </ng-container>
+          </ng-container>
+
+          <br>
+
+          <div class="form-group">
+
+
+          </div>
+          <div class="form-group form-button">
+            <input type="submit" [disabled]="registerForm.invalid" class="btn btn-danger" value="Register" />
+
+          </div>
+        </form>
+      </div>
+      <div class="signup-image">
+
+        <figure><img src="../../../../assets/imges/signup-image.jpg" alt="sing up image"></figure>
+        <!-- <a href="#" class="signup-image-link">I am already member</a>
+                routerLink="/destination" -->
+        <a routerLink="/login" class="signup-image-link">I am already member</a>
+      </div>
+    </div>
+  </div>
+</section>

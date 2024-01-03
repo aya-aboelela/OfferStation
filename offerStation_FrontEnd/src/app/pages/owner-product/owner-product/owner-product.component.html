@@ -1,0 +1,101 @@
+<!-- 
+<header class="d-flex justify-content-center mt-2  ">
+
+  <div
+    id="bannerDiV"
+    class="text-align-left col-11 "
+    style="background-image: url('https://preview.colorlib.com/theme/pulse/img/slider/slider-3.jpg.webp');"
+>
+    <div id="mask" class="p-5 h-100 w-100" style="background-color:rgb(13,23,41,0.5)">
+      <div class="d-flex h-100" >
+        <div class="text-white">
+   
+                   
+                      <h1 class="mb-3 mt-5">{{ownerInfo.name}}</h1>          
+        </div>    
+        </div>
+        <div class="row">
+          <div class="col-5">
+            <p class="text-white" style="font-size: 25px;"><i class=" fa fa-phone mb-4"></i> {{ownerInfo.phoneNumber}}</p>
+    
+           
+          </div>
+          <div class="col-5">
+            <p class="text-white" style="font-size: 25px;"><i class=" fa fa-envelope mb-4"></i> {{ownerInfo.email}}</p>
+          </div>
+          <div class="col-2">
+           
+            <ngb-rating class="starRateColor " [max]="5" [rate]="ownerInfo.rating" [readonly]="true" style="margin-top: -17px;"></ngb-rating>
+          </div>
+        </div>
+        
+       
+     
+              
+    </div>
+  </div>
+</header> -->
+
+<!-- <div class="w-75 mx-auto py-1">
+  <div class="row ">
+    <div class="col-6">
+      <img src="{{ownerInfo.image}}" class="img-fluid rounded-start" [alt]="ownerInfo.id"> 
+    </div>
+    <div class="col-6">
+     <div></div>
+        
+             <h1 style="padding-top: 31px;">{{ownerInfo.name}}</h1>
+          
+
+             <ngb-rating class="starRateColor " [max]="5" [rate]="ownerInfo.rating" [readonly]="true" style="margin-top: 88px;"></ngb-rating>
+   
+      
+    </div>
+  </div>
+</div> -->
+
+<div class="text-center" style="padding-top: 71px;">
+  <!-- src="{{ownerInfo.image}}" -->
+  <img data-test="brand-logo" class="brand-logo" [src]="ownerInfo.image" src="https://fakeimg.pl/300/" alt="Gonn’s dir" width="250" height="250"></div><h1 data-test="brand-name" class="text-center f-30 f-m-20 primary-text mt-2">{{ownerInfo.name}}</h1>
+  <p data-test="brand-cusine" class="mt-2 text-center f-14 f-400 cuisine-string white"><ngb-rating class="starRateColor " [max]="5" [rate]="ownerInfo.rating" [readonly]="true" ></ngb-rating></p>
+
+ 
+             
+
+
+
+<mat-tab-group mat-stretch-tabs="false" class="m-3" mat-align-tabs="center">
+  <mat-tab>
+    
+    <ng-template mat-tab-label><i class="fa-light fa-book"  aria-hidden="true"></i> 
+      
+      Menu
+    </ng-template>
+    <app-owner-menu class="mt-5"></app-owner-menu>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label><i class="fa fa-gift" aria-hidden="true"></i>
+
+    
+      Offers
+      </ng-template>
+      <app-ownerofferdetail class="mt-5"></app-ownerofferdetail>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label><i class="fa fa-map-marker-alt" aria-hidden="true"> </i>
+
+      Addreses
+      </ng-template>
+  <app-ownerdetails class="mt-5"></app-ownerdetails>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label><i class="far fa-comments"> </i>
+
+        Reviews  
+      </ng-template>
+ <app-ownerreview class="mt-5"></app-ownerreview>
+    </mat-tab>
+  
+  </mat-tab-group>
+  

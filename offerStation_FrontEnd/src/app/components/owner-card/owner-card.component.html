@@ -1,0 +1,18 @@
+<div class="card" style="width: 18rem;">
+  <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="img-content">
+
+
+  <img [src]="OwnerImge" alt="Avatar" class="image card-img-top" style="width:100%">
+  <div class="middle">
+    <div class="text"><a type="button" class="btn btn-warning text-white" *ngIf="Type=='owner'" href="owner/mainpage/{{sellerId}}">Show Menu</a>
+    <div class="text"><a type="button" class="btn btn-warning text-white" *ngIf="Type=='supplier'"  href="supplier/mainpage/{{sellerId}}">Show Menu</a>
+
+    </div>
+  </div>
+</div>
+  <div class="card-body">
+    <h5 class="card-text">{{OwnerName}}</h5>
+    <ngb-rating  class="starRateColor" [max]="5" [rate]="OwnerRate" [readonly]="true"></ngb-rating> 
+  </div>
+</div>

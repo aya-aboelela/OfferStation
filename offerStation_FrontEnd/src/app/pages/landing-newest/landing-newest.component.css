@@ -1,0 +1,79 @@
+.discount_3 {
+  position: absolute;
+  right: 10px;
+  top: -6px;
+  background-image: url(../../../assets/imges/discount_orange.svg);
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 47px;
+
+  color: #FFF;
+}
+.category-container
+{
+  background-color: white;
+  border: 20px gray;
+  border: 1px solid rgb(199, 193, 193);
+  border-radius:20px ;
+ /* height: 90%; */
+
+}
+.category-details{
+  width: 100%;
+  background-color:#FEA116 ;
+  border: 0  solid rgb(199, 193, 193);
+  border-radius:20px 20px 0px 0px ;
+}
+
+.card{
+  height: 380px;
+  margin: 0 0.5em;
+  box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+  border: none;
+  border-radius: 0;
+}
+.carousel-inner {
+  padding: 1em;
+}
+.cart-container button{
+border:1px solid #FEA116 ;
+color: #FEA116;
+}
+.showAll{
+  text-decoration: none;
+  font-size: 23px;
+  font-weight: 500;
+  margin-top: 15px;
+  cursor: pointer;
+  /* margin-right: 15px; */
+}
+.testimonial-card .card-up {
+  height: 120px;
+  overflow: hidden;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+}
+.cards-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.card img {
+  max-width: 100%;
+  max-height: 100%;
+}
+@keyframes animatedBackground {
+
+    from {background-size:contain}
+  to   {background-size:cover}
+  }
+
+.testimonial-card .avatar {
+  width: 96px;
+  margin-top: -60px;
+  overflow: hidden;
+  border: 3px solid rgb(235, 230, 236);
+  border-radius: 50%;
+  height: 187px;
+}
+
+/* new*/

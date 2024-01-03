@@ -1,0 +1,52 @@
+<div class="container container-fluid mt-5 mb-5">
+            
+    <table class="table  table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+        <thead class="table-warning">
+            <tr>
+                <th>order Number</th>
+                <th>Seller Name</th>
+                <th>Total</th>
+                <th>Date</th>
+                <th>order details</th>
+                <th>Confirm</th>
+            </tr>
+           
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of ordertList let i = index ">
+                <td>{{i}}</td>
+                <td>{{order.requesterName}}</td>
+                <td>{{order.netTotal}}</td>
+                <td>{{order.orderDate }}</td>
+                <td><button class="btn btn-success " (click)="openAddressModal(order.offers,order.products)">Order Details</button></td>
+                <td><button type="button" class="btn btn-success" (click)="changeStatus(order.id)" >Shipped</button></td>
+               
+            </tr>
+        </tbody> 
+    </table>
+    <div class="modal " id="exampleModal" [ngStyle]="{'display':display}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close " aria-label="Close"  (click)="onCloseAddressHandled()"><span
+              aria-hidden="true">&times;</span></button>
+          <h2 class="modal-title" style="font-size: initial; color: #e7880a;">Order Details </h2>
+        </div>
+        <div class="modal-body">
+          <div *ngFor="let offer of offersResult ">
+            <app-supplier-product-offer-details Type="offer" [id]="offer.traderOfferId" [Quantity]="offer.quantity" ></app-supplier-product-offer-details>
+          </div>
+          <div *ngFor="let product of productResult ">
+            <app-supplier-product-offer-details  Type="product"  [id]="product.traderProductId" [Quantity]="product.quantity" ></app-supplier-product-offer-details>
+          </div>
+          
+            
+  
+        </div>
+      </div>
+    </div>
+    </div>
+    
+    
+</div>
